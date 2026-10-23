@@ -1,0 +1,8 @@
+name: astrbot_plugin_group_window
+display_name: 群聊窗口
+short_desc: 让群聊主动回复基于"此刻"的上下文
+desc: 在 AstrBot 决定主动回复后，先等一个短窗口收集群友接话，再把"群聊最近记录"替换成本次请求的输入。回复因此接的是当下的话题，而不是几十秒前抽中的那条消息。带冷却，避免连续插话。
+version: v0.4.3
+author: nozomi
+repo: https://github.com/nozomi123k/astrbot_plugin_group_window
+astrbot_version: ">=4.29,<5"

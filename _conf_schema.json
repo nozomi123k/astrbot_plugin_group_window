@@ -1,0 +1,88 @@
+{
+  "enabled": {
+    "description": "总开关",
+    "type": "bool",
+    "default": true
+  },
+  "dry_run": {
+    "description": "试跑模式（只写日志，不改写请求）",
+    "hint": "开启后插件会完整走一遍窗口逻辑并打印结果，但不会真的替换发给模型的内容。",
+    "type": "bool",
+    "default": false
+  },
+  "trace": {
+    "description": "追踪日志（每个决策都打 INFO）",
+    "hint": "关闭后这些日志降到 DEBUG，日志会安静很多。排查问题时务必打开。",
+    "type": "bool",
+    "default": true
+  },
+  "debug_log": {
+    "description": "打印窗口全文",
+    "type": "bool",
+    "default": true
+  },
+  "window_seconds": {
+    "description": "窗口长度（秒）",
+    "hint": "触发后等待多久再取快照。3 秒一条的群建议 5；1 秒一条的群 3 就够。",
+    "type": "int",
+    "default": 5
+  },
+  "cooldown_seconds": {
+    "description": "两次主动插话的最小间隔（秒）",
+    "hint": "同一个群两次插话之间至少隔这么久，冷却期内的请求直接跳过、不调用模型。AstrBot 的 active_reply 在会话被唤醒后可能持续响应，不受概率控制，这一层是插件自己的兜底。0 = 不限制。",
+    "type": "int",
+    "default": 30
+  },
+  "max_wait_seconds": {
+    "description": "窗口最长等待（秒）",
+    "type": "int",
+    "default": 6
+  },
+  "context_seconds": {
+    "description": "窗口回看时长（秒）",
+    "hint": "从缓冲里取最近多少秒的消息。",
+    "type": "int",
+    "default": 40
+  },
+  "max_messages": {
+    "description": "窗口最多条数",
+    "type": "int",
+    "default": 25
+  },
+  "max_chars": {
+    "description": "窗口字符预算",
+    "type": "int",
+    "default": 1200
+  },
+  "buffer_size": {
+    "description": "每群缓冲条数",
+    "type": "int",
+    "default": 200
+  },
+  "per_line_chars": {
+    "description": "单条消息截断长度",
+    "type": "int",
+    "default": 120
+  },
+  "ignore_commands": {
+    "description": "缓冲时忽略指令消息",
+    "type": "bool",
+    "default": true
+  },
+  "skip_marker": {
+    "description": "不插话标记",
+    "type": "string",
+    "default": "[SKIP]"
+  },
+  "reply_style": {
+    "description": "接话要求（写进提示词）",
+    "type": "string",
+    "default": "接着最新的话题，用一句话（不超过 40 字）自然地接话。不要回答更早的问题，不要总结记录，不要复述别人的话。"
+  },
+  "extra_instruction": {
+    "description": "附加指令",
+    "hint": "会跟在接话要求后面一起发给模型。默认用来禁止它顺手调群聊历史查询工具。",
+    "type": "string",
+    "default": "不要调用任何历史记录查询工具，你需要的信息已经在上面了。"
+  }
+}
